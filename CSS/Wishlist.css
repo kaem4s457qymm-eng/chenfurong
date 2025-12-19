@@ -1,0 +1,584 @@
+/* 全局样式重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 基础样式 */
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f8f8f8;
+  overflow-x: hidden;
+}
+
+/* 容器 */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 头部样式 */
+.header {
+  width: 100%;
+  height: 80px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  padding: 0 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.lang-selector {
+  position: relative;
+}
+
+.lang-trigger {
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: #555;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-trigger:hover {
+  background-color: #f5f5f5;
+}
+
+.lang-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: none;
+  z-index: 1000;
+}
+
+.lang-selector:hover .lang-menu {
+  display: block;
+}
+
+.lang-item {
+  display: block;
+  padding: 8px 15px;
+  text-decoration: none;
+  color: #555;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.lang-item:hover {
+  background-color: #f5f5f5;
+  color: #e61f34;
+}
+
+.search-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #555;
+  cursor: pointer;
+  padding: 5px;
+  transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+  color: #e61f34;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-list li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 0;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-list li a:hover {
+  color: #e61f34;
+}
+
+.nav-list li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: #e61f34;
+  transition: width 0.3s ease;
+}
+
+.nav-list li a:hover::after {
+  width: 100%;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #e61f34;
+  text-decoration: none;
+}
+
+.login-btn, .fav-btn, .cart-btn {
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: #555;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.login-btn:hover, .fav-btn:hover, .cart-btn:hover {
+  background-color: #f5f5f5;
+  color: #e61f34;
+}
+
+.fav-btn.active {
+  color: #e61f34;
+  font-weight: 600;
+}
+
+.login-btn a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 愿望单主内容 */
+.wishlist-main {
+  padding: 120px 0 100px;
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+/* 愿望单头部 */
+.wishlist-header {
+  background-color: #f8f8f8;
+  padding: 40px 0;
+  margin-bottom: 40px;
+}
+
+.wishlist-title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.wishlist-search {
+  max-width: 600px;
+  margin: 0 auto 30px;
+  display: flex;
+  gap: 10px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 15px 20px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  background-color: #fff;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #e61f34;
+  box-shadow: 0 0 0 3px rgba(230, 31, 52, 0.1);
+}
+
+.search-submit {
+  padding: 15px 20px;
+  font-size: 16px;
+  background-color: #e61f34;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.search-submit:hover {
+  background-color: #c41327;
+  transform: translateY(-2px);
+}
+
+.wishlist-filters {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 10px 20px;
+  font-size: 14px;
+  background-color: #fff;
+  color: #555;
+  border: 1px solid #ddd;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  border-color: #e61f34;
+  color: #e61f34;
+}
+
+.filter-btn.active {
+  background-color: #e61f34;
+  color: #fff;
+  border-color: #e61f34;
+}
+
+/* 愿望单产品列表 */
+.wishlist-content {
+  background-color: #fff;
+}
+
+.wishlist-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+/* 愿望单产品项 */
+.wishlist-item {
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.wishlist-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.wishlist-item-image {
+  position: relative;
+  height: 350px;
+  overflow: hidden;
+}
+
+.wishlist-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.wishlist-item:hover .wishlist-item-image img {
+  transform: scale(1.05);
+}
+
+.product-brand-mark {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #e61f34;
+  color: #fff;
+  padding: 5px 15px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 4px;
+  z-index: 10;
+}
+
+.wishlist-item-info {
+  padding: 25px;
+}
+
+.wishlist-item-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.wishlist-item-description {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.wishlist-item-price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #e61f34;
+  margin-bottom: 20px;
+}
+
+.wishlist-item-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.add-to-cart-btn, .remove-btn {
+  flex: 1;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-to-cart-btn {
+  background-color: #333;
+  color: #fff;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #e61f34;
+  transform: translateY(-2px);
+}
+
+.remove-btn {
+  background-color: #fff;
+  color: #666;
+  border: 1px solid #ddd;
+}
+
+.remove-btn:hover {
+  background-color: #f8f8f8;
+  color: #e61f34;
+  border-color: #e61f34;
+}
+
+/* 空愿望单提示 */
+.empty-wishlist {
+  text-align: center;
+  padding: 100px 0;
+  color: #666;
+}
+
+.empty-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.empty-wishlist h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.empty-wishlist p {
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+.browse-btn {
+  display: inline-block;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #e61f34;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.browse-btn:hover {
+  background-color: #c41327;
+  transform: translateY(-2px);
+}
+
+/* 页脚 */
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 40px 50px;
+  text-align: center;
+}
+
+.footer-info p {
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+/* 搜索弹窗 */
+.search-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.search-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.search-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+}
+
+.search-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #555;
+  cursor: pointer;
+  padding: 5px;
+}
+
+/* 响应式设计 */
+@media (max-width: 992px) {
+  .header {
+    padding: 0 20px;
+  }
+  
+  .wishlist-items {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+  }
+  
+  .wishlist-item-image {
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-list {
+    display: none;
+  }
+  
+  .wishlist-title {
+    font-size: 28px;
+  }
+  
+  .wishlist-search {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .wishlist-filters {
+    gap: 10px;
+  }
+  
+  .filter-btn {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+  
+  .wishlist-items {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .wishlist-item-info {
+    padding: 20px;
+  }
+  
+  .wishlist-item-name {
+    font-size: 16px;
+  }
+  
+  .wishlist-item-price {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0 15px;
+  }
+  
+  .logo {
+    font-size: 20px;
+  }
+  
+  .wishlist-main {
+    padding: 100px 0 80px;
+  }
+  
+  .wishlist-header {
+    padding: 30px 0;
+  }
+  
+  .wishlist-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .wishlist-items {
+    grid-template-columns: 1fr;
+    padding: 0 15px;
+  }
+  
+  .wishlist-item-actions {
+    flex-direction: column;
+  }
+}

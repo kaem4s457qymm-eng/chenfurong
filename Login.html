@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Romanticism - 登录</title>
+  <link rel="stylesheet" href="CSS/Login.css">
+</head>
+<body>
+  <!-- 导航栏 -->
+  <header class="header">
+    <div class="header-left">
+      <div class="lang-selector">
+        <button class="lang-trigger">En</button>
+        <div class="lang-menu">
+          <a href="#" class="lang-item">English</a>
+          <a href="#" class="lang-item">简体中文</a>
+        </div>
+      </div>
+      <button class="search-btn">🔍</button>
+    </div>
+    
+    <nav class="nav">
+      <ul class="nav-list">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="Brand Story.html">品牌故事</a></li>
+        <li><a href="Jewelry Collection.html">珠宝系列</a></li>
+        <li><a href="Proposal Rings.html">求婚钻戒</a></li>
+        <li><a href="Wedding Rings New.html">结婚对戒</a></li>
+        <li><a href="True Love Tokens.html">真爱信物</a></li>
+      </ul>
+    </nav>
+    <div class="header-right">
+      <a href="#" class="logo">Romanticism</a>
+      <button class="login-btn active"><a href="Login.html">登入</a></button>
+      <button class="fav-btn"><a href="Wishlist.html">❤️</a></button>
+      
+    </div>
+  </header>
+
+  <!-- 登录表单区域 -->
+  <main class="login-main">
+    <div class="login-container">
+      <div class="login-form-wrapper">
+        <h1 class="login-title">欢迎回来</h1>
+        <p class="login-subtitle">登录您的账户，探索更多精彩</p>
+        
+        <form id="login-form" class="login-form">
+          <div class="form-group">
+            <label for="username" class="form-label">用户名/邮箱</label>
+            <input type="text" id="username" name="username" class="form-input" placeholder="请输入用户名或邮箱" required>
+            <div class="error-message" id="username-error"></div>
+          </div>
+          
+          <div class="form-group">
+            <label for="password" class="form-label">密码</label>
+            <input type="password" id="password" name="password" class="form-input" placeholder="请输入密码" required>
+            <div class="error-message" id="password-error"></div>
+          </div>
+          
+          <div class="form-options">
+            <div class="remember-me">
+              <input type="checkbox" id="remember-me" name="remember-me">
+              <label for="remember-me">记住我</label>
+            </div>
+            <a href="#" class="forgot-password">忘记密码？</a>
+          </div>
+          
+          <button type="submit" class="login-btn-primary">登录</button>
+          
+          <div class="divider">
+            <span>或</span>
+          </div>
+          
+          <div class="social-login">
+            <button type="button" class="social-btn wechat">微信登录</button>
+            <button type="button" class="social-btn weibo">微博登录</button>
+          </div>
+          
+          <div class="register-link">
+            <p>还没有账户？<a href="#">立即注册</a></p>
+          </div>
+        </form>
+      </div>
+      
+      <div class="login-image">
+        <img src="img/VCG41N1722652149.jpg" alt="Romanticism珠宝">
+      </div>
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="footer-info">
+      <p>Romanticism珠宝商城 © 2024级软件一班王耀 版权所有</p>
+    </div>
+  </footer>
+
+  <!-- 搜索弹窗 -->
+  <div class="search-modal">
+    <div class="search-content">
+      <button class="search-close">×</button>
+      <input type="text" class="search-input" placeholder="搜索Romanticism产品...">
+      <button class="search-submit">搜索</button>
+    </div>
+  </div>
+
+  <script src="JS/Login.js"></script>
+</body>
+</html>

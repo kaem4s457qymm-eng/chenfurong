@@ -1,0 +1,714 @@
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      list-style: none;
+      text-decoration: none;
+      font-family: "Microsoft Yahei", sans-serif;
+    }
+    .header {
+      width: 100%;
+      height: 80px;
+      background-color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      position: fixed; /* 固定顶部 */
+      top: 0;
+      left: 0;
+      z-index: 999;
+      padding: 0 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* 左侧区域：语言切换+搜索 */
+     .lang-selector {
+    position: relative;
+    display: inline-block;
+  }
+
+  .lang-trigger {
+    border: none;
+    background: transparent;
+    color: #333;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .lang-trigger:hover {
+    background-color: #f5f5f5;
+  }
+
+  /* 核心：滑出动画样式 */
+  .lang-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 100px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    padding: 0; /* 初始padding为0，动画时展开 */
+    z-index: 1000;
+    /* 隐藏状态：透明+高度为0+溢出隐藏 */
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    /* 动画过渡：所有属性0.3秒平滑变化 */
+    transition: all 0.3s ease-in-out;
+  }
+
+  /* 悬浮时：显示菜单+滑出效果 */
+  .lang-selector:hover .lang-menu {
+    opacity: 1; /* 显示（不透明） */
+    max-height: 200px; /* 足够大的高度，容纳所有选项 */
+    padding: 8px 0; /* 展开内边距 */
+  }
+
+  .lang-item {
+    display: block;
+    color: #333;
+    font-size: 14px;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+  .lang-item:hover {
+    background-color: #f5f5f5;
+  }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .lang-switch {
+      color: #333;
+      font-size: 14px;
+      padding: 5px 10px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    .lang-switch:hover {
+      background-color: #f5f5f5;
+    }
+    .search-btn {
+      border: none;
+      background: transparent;
+      font-size: 18px;
+      cursor: pointer;
+      color: #333;
+      padding: 5px;
+    }
+   .search-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255,0.95); /* 半透明白底，匹配DR风格 */
+    z-index: 9999; /* 层级高于所有元素 */
+    display: none; /* 默认隐藏 */
+    padding-top: 80px; /* 适配顶部导航栏高度 */
+  }
+
+  /* 弹窗内容容器 */
+  .search-modal-content {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* 关闭按钮 */
+  .search-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    border: none;
+    background: transparent;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+  }
+
+  /* 搜索区域 */
+  .search-header {
+    margin-bottom: 30px;
+  }
+  .search-subtitle {
+    font-size: 14px;
+    color: #999;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .search-input {
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-bottom: 1px solid #eee;
+    font-size: 32px;
+    color: #333;
+    padding: 0 10px;
+    outline: none;
+    background: transparent;
+  }
+  .search-input::placeholder {
+    color: #ccc;
+  }
+
+  /* 搜索结果区域 */
+  .search-result {
+    padding-top: 20px;
+  }
+  .no-result {
+    font-size: 16px;
+    color: #999;
+    margin-bottom: 15px;
+  }
+  .search-help {
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+  }
+  .search-help:hover {
+    text-decoration: underline;
+  }
+    /* 中间导航菜单 */
+    .nav {
+      flex: 1; /* 占满中间空间 */
+      text-align: center;
+    }
+    .nav-list {
+      display: inline-flex;
+      gap: 40px; /* 菜单间距 */
+    }
+    .nav-list a {
+      color: #222;
+      font-size: 16px;
+      font-weight: 500;
+      position: relative;
+      padding: 10px 0;
+    }
+    /* 菜单hover下划线效果 */
+    .nav-list a::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background-color: #e61f34; /* DR品牌红 */
+      transition: width 0.3s;
+    }
+    .nav-list a:hover::after {
+      width: 80%;
+    }
+
+    /* 右侧区域：Logo+功能按钮 */
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #e61f34;
+      letter-spacing: 2px;
+    }
+    .header-right button {
+      border: none;
+      background: transparent;
+      font-size: 16px;
+      color: #333;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 10px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    .header-right button:hover {
+      background-color: #f5f5f5;
+    }
+
+    /* 适配小屏幕（可选） */
+    @media (max-width: 992px) {
+      .nav {
+        display: none; /* 隐藏PC菜单，可替换为汉堡按钮 */
+      }
+      .header {
+        padding: 0 20px;
+      }
+    }
+    /* 轮播图容器 */
+.banner-swiper {
+  width: 100%;
+  height: 80vh; /* 占视口高度80%，可调整 */
+  position: relative;
+  overflow: hidden; /* 隐藏超出部分 */
+  margin-top: 80px; /* 适配顶部固定导航栏 */
+}
+
+/* 轮播图列表 */
+.swiper-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex; /* 横向排列轮播项 */
+  transition: transform 0.5s ease-in-out; /* 切换过渡动画 */
+}
+
+/* 单个轮播项 */
+.swiper-slide {
+  min-width: 100%; /* 每个轮播项占满容器 */
+  height: 100%;
+  position: relative;
+}
+
+/* 轮播图图片 */
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 保持比例填充容器 */
+}
+
+/* 轮播图文字内容 */
+.slide-content {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  color: #fff;
+  z-index: 10; /* 文字在图片上层 */
+}
+
+.slide-title {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.slide-desc {
+  font-size: 20px;
+  margin-bottom: 30px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.slide-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: #e61f34; /* DR品牌红 */
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.slide-btn:hover {
+  background-color: #c91729;
+}
+
+/* 左右切换按钮 */
+.swiper-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255,255,255,0.3);
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.3s;
+}
+
+.swiper-btn:hover {
+  background-color: rgba(255,255,255,0.6);
+}
+
+.swiper-btn-prev {
+  left: 30px;
+}
+
+.swiper-btn-next {
+  right: 30px;
+}
+
+/* 底部分页指示器 */
+.swiper-pagination {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.pagination-item {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.pagination-item.active {
+  background-color: #fff;
+  transform: scale(1.2);
+}
+.footer {
+  margin-top: 50px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  text-align: center;
+}
+
+.float-service {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.service-btn {
+  border: none;
+  background: #e61f34;
+  color: #fff;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+/* 品牌理念区域 */
+.brand-philosophy {
+  background-color: #f8f8f8;
+  padding: 40px 0;
+  text-align: center;
+  margin: 30px 0;
+}
+
+.philosophy-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.philosophy-content h3 {
+  font-size: 24px;
+  color: #e61f34;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.philosophy-content p {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* 珠宝分类展示 */
+.collection-categories {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.collection-categories h2 {
+  font-size: 32px;
+  color: #222;
+  margin-bottom: 40px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.category-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.category-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.category-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+.category-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  padding: 40px 20px 20px;
+  color: #fff;
+}
+
+.category-overlay h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.category-overlay p {
+  font-size: 14px;
+  margin-bottom: 0;
+  opacity: 0.9;
+}
+
+/* 产品展示区域 */
+.product-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-header h2 {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.section-header p {
+  font-size: 18px;
+  color: #666;
+}
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.product-card {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.product-image {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image img {
+  transform: scale(1.05);
+}
+
+.product-info {
+  padding: 20px;
+  text-align: center;
+}
+
+.product-info h4 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.product-info p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.product-price {
+  display: block;
+  font-size: 18px;
+  color: #e61f34;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.view-details {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #e61f34;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.view-details:hover {
+  background-color: #c61a2a;
+}
+
+/* 搜索弹窗样式 */
+.search-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.search-content {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+  position: relative;
+}
+
+.search-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+}
+
+.search-input {
+  width: 70%;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: #e61f34;
+}
+
+.search-submit {
+  width: 30%;
+  padding: 12px 20px;
+  font-size: 16px;
+  background-color: #e61f34;
+  color: #fff;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-submit:hover {
+  background-color: #c61a2a;
+}
+
+@media (max-width: 992px) {
+  .nav {
+    display: none; /* 隐藏PC菜单，可替换为汉堡按钮 */
+  }
+  .header {
+    padding: 0 20px;
+  }
+  .float-service {
+    bottom: 10px;
+    right: 10px;
+  }
+  .slide-title {
+    font-size: 36px;
+  }
+  .slide-desc {
+    font-size: 16px;
+  }
+  .collection-categories {
+    padding: 40px 20px;
+  }
+  .product-section {
+    padding: 40px 20px;
+  }
+  .collection-categories h2,
+  .section-header h2 {
+    font-size: 28px;
+  }
+  .product-list {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .slide-title {
+    font-size: 28px;
+  }
+  .slide-desc {
+    font-size: 14px;
+  }
+  .search-content {
+    padding: 20px;
+    width: 90%;
+  }
+  .search-input {
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  .search-submit {
+    width: 100%;
+    border-radius: 4px;
+  }
+  .categories-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .category-image {
+    height: 250px;
+  }
+  .product-image {
+    height: 250px;
+  }
+}
+
+    

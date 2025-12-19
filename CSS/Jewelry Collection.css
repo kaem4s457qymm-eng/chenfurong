@@ -1,0 +1,292 @@
+/* Jewelry Collection.css */
+
+/* 珠宝系列英雄区 */
+.collection-hero {
+  background-color: #f8f8f8;
+  padding: 100px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin-top: 80px;
+}
+
+.collection-hero h1 {
+  font-size: 48px;
+  color: #e61f34;
+  margin-bottom: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.collection-hero p {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 0;
+}
+
+/* 系列分类区 */
+.collection-categories {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.collection-categories h2 {
+  font-size: 32px;
+  color: #222;
+  margin-bottom: 40px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.category-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.category-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.category-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+.category-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  padding: 40px 20px 20px;
+  color: #fff;
+}
+
+.category-overlay h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.category-overlay p {
+  font-size: 14px;
+  margin-bottom: 0;
+  opacity: 0.9;
+}
+
+/* 产品展示区 */
+.collection-products {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.collection-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.collection-header h2 {
+  font-size: 32px;
+  color: #222;
+  font-weight: bold;
+}
+
+.filter-options {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  color: #666;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.filter-btn:hover {
+  border-color: #e61f34;
+  color: #e61f34;
+}
+
+.filter-btn.active {
+  background-color: #e61f34;
+  border-color: #e61f34;
+  color: #fff;
+}
+
+/* 产品网格 */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.product-item {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.product-brand-mark {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #e61f34;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 10;
+}
+
+.product-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.product-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+.product-info {
+  padding: 20px;
+  text-align: center;
+}
+
+.product-name {
+  font-size: 16px;
+  color: #222;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.product-description {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.product-price {
+  font-size: 18px;
+  color: #e61f34;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.product-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #e61f34;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.product-btn:hover {
+  background-color: #c61a2a;
+}
+
+/* 加载更多按钮 */
+.load-more {
+  text-align: center;
+}
+
+.load-more-btn {
+  padding: 12px 40px;
+  background-color: #fff;
+  border: 1px solid #e61f34;
+  color: #e61f34;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.load-more-btn:hover {
+  background-color: #e61f34;
+  color: #fff;
+}
+
+/* 响应式设计 */
+@media (max-width: 992px) {
+  .collection-hero h1 {
+    font-size: 36px;
+  }
+  .collection-hero p {
+    font-size: 16px;
+  }
+  .collection-categories,
+  .collection-products {
+    padding: 40px 20px;
+  }
+  .categories-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .collection-hero {
+    padding: 80px 0;
+  }
+  .collection-hero h1 {
+    font-size: 28px;
+  }
+  .collection-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .filter-options {
+    width: 100%;
+  }
+  .filter-btn {
+    flex: 1;
+    min-width: 100px;
+  }
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .category-image,
+  .product-image {
+    height: 250px;
+  }
+}
